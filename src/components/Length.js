@@ -23,4 +23,4 @@ class Length extends React.Component {
     }
   }
 
-export default Length;
+export { Length };

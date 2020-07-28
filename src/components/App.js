@@ -1,8 +1,8 @@
 import React from 'react';
-import Timer from './Timer';
-import Title from './Title';
-import Length from './Length';
-import Button from './Button';
+import { Timer } from './Timer';
+import { Title } from './Title';
+import { Length } from './Length';
+import { Button } from './Button';
 import {DEFAULT_SESSION_DURATION, DEFAULT_BREAK_DURATION, ALERT_SOUND} from '../constants';
 
 class App extends React.Component {
