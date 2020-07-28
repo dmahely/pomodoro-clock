@@ -204,10 +204,10 @@ render() {
         decrementMethod={this.decrementDuration}
       />
       <Timer
-        isSession={this.state.currentSessionType}
+        currentSessionType={this.state.currentSessionType}
         timeLeft={this.state.timeLeft}
         timeLeftId="time-left"
-        sessionTitle={this.state.currentSessionType ? "Session" : "Break"}
+        sessionTitle={this.state.currentSessionType === 'work' ? "Session" : "Break"}
         labelId="timer-label"
       />
       <Button
