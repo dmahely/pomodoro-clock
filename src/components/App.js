@@ -3,17 +3,10 @@ import { Timer } from './Timer';
 import { Title } from './Title';
 import { Length } from './Length';
 import { Button } from './Button';
-import {DEFAULT_SESSION_DURATION, DEFAULT_BREAK_DURATION, ALERT_SOUND} from '../constants';
+import { ALERT_SOUND, INITIAL_STATE } from '../constants';
 
 class App extends React.Component {
-state = {
-  sessionDuration: DEFAULT_SESSION_DURATION,
-  breakDuration: DEFAULT_BREAK_DURATION,
-  currentSessionType: "work",
-  isTimerRunning: false, // whether a session is currently running
-  timeLeft: "",
-  intervalID: ""
-};
+state = INITIAL_STATE;
 
 componentDidMount = () => {
   const sessionDuration = this.state.sessionDuration;
@@ -73,14 +66,7 @@ decrementDuration = (e) => {
 
 // resets the app to its default state
 resetDurations = () => {
-  const timeLeft = this.formatTime(DEFAULT_SESSION_DURATION, 0);
-  this.setState({
-    sessionDuration: DEFAULT_SESSION_DURATION,
-    breakDuration: DEFAULT_BREAK_DURATION,
-    isTimerRunning: false,
-    currentSessionType: "work",
-    timeLeft: timeLeft
-  });
+  this.setState(INITIAL_STATE);
   this.clearCurrentInterval();
   // stops alert sound
   const audio = document.getElementById("beep");
