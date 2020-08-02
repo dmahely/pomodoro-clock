@@ -125,7 +125,7 @@ startInterval = (currentSessionType, timeLeft) => {
   let min = timeLeft.slice(0, 2); // gets first two characters
   let sec = timeLeft.slice(-2); // gets last two characters
   const interval = setInterval(() => {
-    if (sec === 0) {
+    if (sec === '00' || sec === 0) {
       min--;
       sec = 59;
     } else {
