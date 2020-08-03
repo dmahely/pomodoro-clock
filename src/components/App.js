@@ -171,41 +171,49 @@ formatTime = (min, sec) => {
 
 render() {
   return (
-    <div>
+    <div id="container">
       <Title title="Pomodoro Clock" />
-      <Length
-        text="Break Length"
-        textId="break-label"
-        decrementId="break-decrement"
-        incrementId="break-increment"
-        durationId="break-length"
-        time={this.state.breakDuration}
-        incrementMethod={this.incrementDuration}
-        decrementMethod={this.decrementDuration}
-      />
-      <Length
-        text="Session Length"
-        textId="session-label"
-        decrementId="session-decrement"
-        incrementId="session-increment"
-        durationId="session-length"
-        time={this.state.sessionDuration}
-        incrementMethod={this.incrementDuration}
-        decrementMethod={this.decrementDuration}
-      />
       <Timer
         currentSessionType={this.state.currentSessionType}
         timeLeft={this.state.timeLeft}
         timeLeftId="time-left"
-        sessionTitle={this.state.currentSessionType === 'work' ? "Session" : "Break"}
+        sessionTitle={this.state.currentSessionType === 'work' ? "Let's get to Work!" : "Time for a Break!"}
         labelId="timer-label"
       />
-      <Button
-        buttonId="start_stop"
-        text="Start/Stop"
-        onClick={this.startStopSession}
-      />
-      <Button buttonId="reset" text="Reset" onClick={this.resetDurations} />
+      <div className="buttons-container">
+        <Button
+          buttonId="start_stop"
+          text="Start/Stop"
+          onClick={this.startStopSession}
+        />
+        <Button 
+          buttonId="reset" 
+          text="Reset" 
+          onClick={this.resetDurations} 
+        />
+      </div>
+      <div className="length-container">
+        <Length
+          text="Session Length"
+          textId="session-label"
+          decrementId="session-decrement"
+          incrementId="session-increment"
+          durationId="session-length"
+          time={this.state.sessionDuration}
+          incrementMethod={this.incrementDuration}
+          decrementMethod={this.decrementDuration}
+        />
+        <Length
+          text="Break Length"
+          textId="break-label"
+          decrementId="break-decrement"
+          incrementId="break-increment"
+          durationId="break-length"
+          time={this.state.breakDuration}
+          incrementMethod={this.incrementDuration}
+          decrementMethod={this.decrementDuration}
+        />
+      </div>
       <audio id="beep">
         <source src={ALERT_SOUND} type="audio/mpeg" />
       </audio>
