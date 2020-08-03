@@ -17,11 +17,12 @@ componentDidMount = () => {
 // for incrementing either break or session length
 incrementDuration = (e) => {
   const target = e.target.id;
+  const isTimerRunning = this.state.isTimerRunning;
 
   switch (target) {
     case "session-increment":
       let sessionDuration = this.state.sessionDuration;
-      if (sessionDuration < 60) {
+      if (sessionDuration < 60 && !isTimerRunning) {
         sessionDuration++;
         const timeLeft = this.formatTime(sessionDuration, 0);
         this.setState({ sessionDuration, timeLeft });
@@ -29,7 +30,7 @@ incrementDuration = (e) => {
       break;
     case "break-increment":
       let breakDuration = this.state.breakDuration;
-      if (breakDuration < 60) {
+      if (breakDuration < 60 && !isTimerRunning) {
         breakDuration++;
         this.setState({ breakDuration });
       }
@@ -42,11 +43,12 @@ incrementDuration = (e) => {
 // for decrementing either break or session length
 decrementDuration = (e) => {
   const target = e.target.id;
+  const isTimerRunning = this.state.isTimerRunning;
 
   switch (target) {
     case "session-decrement":
       let sessionDuration = this.state.sessionDuration;
-      if (sessionDuration > 1) {
+      if (sessionDuration > 1 && !isTimerRunning) {
         sessionDuration--;
         const timeLeft = this.formatTime(sessionDuration, 0);
         this.setState({ sessionDuration, timeLeft });
@@ -54,7 +56,7 @@ decrementDuration = (e) => {
       break;
     case "break-decrement":
       let breakDuration = this.state.breakDuration;
-      if (breakDuration > 1) {
+      if (breakDuration > 1 && !isTimerRunning) {
         breakDuration--;
         this.setState({ breakDuration });
       }
